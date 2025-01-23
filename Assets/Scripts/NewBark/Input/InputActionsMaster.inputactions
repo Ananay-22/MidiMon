@@ -11,7 +11,8 @@
                     "id": "80033cf8-abff-4a66-b536-2615fefd00fb",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "ButtonB",
@@ -19,7 +20,8 @@
                     "id": "e49d9410-0957-4001-a00e-2eae1453a655",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "ButtonDirectional",
@@ -27,7 +29,8 @@
                     "id": "9df6fe33-0459-415e-ad33-d948dd83c772",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ButtonSelect",
@@ -35,7 +38,8 @@
                     "id": "af96df5f-0690-42c3-a0e7-478c3dddc598",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "ButtonStart",
@@ -43,7 +47,8 @@
                     "id": "488c0f70-604a-458f-bb0e-77c73089870b",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -70,6 +75,39 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "MIDI",
+                    "id": "a86ad85c-4107-4a9c-ad85-c224c87c2356",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonA",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "a2784b2b-a3fe-4a87-9210-f3a6723e0639",
+                    "path": "<MidiDevice>/note055",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonA",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "176c180f-78fe-4869-804f-719cd90cab69",
+                    "path": "<MidiDevice>/note052",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonA",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "d3bd7194-ae75-4014-99c9-dc6ac6426e70",
                     "path": "<Gamepad>/buttonSouth",
@@ -90,6 +128,39 @@
                     "action": "ButtonB",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "MIDI",
+                    "id": "8b344849-82d4-4bfd-b731-d57d3b239bd6",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonB",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "b7c6d3f5-1e39-45a9-823b-c7c753afdd96",
+                    "path": "<MidiDevice>/note055",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonB",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "9bbe6423-bfbc-4d3e-a686-6012150e6e72",
+                    "path": "<MidiDevice>/note048",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonB",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "Dpad",
@@ -139,6 +210,72 @@
                     "name": "Right",
                     "id": "a4f25778-4d24-4a5c-8363-c0327e2f425b",
                     "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad CS",
+                    "action": "ButtonDirectional",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "MIDI",
+                    "id": "2c349d71-15d2-46b2-9620-b7a5b55d9355",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad CS",
+                    "action": "ButtonDirectional",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Up",
+                    "id": "8b75cb3b-db2c-47df-b99d-d0c5c03c6959",
+                    "path": "<MidiDevice>/note064",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad CS",
+                    "action": "ButtonDirectional",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "b9c1ae33-e365-4349-b858-896b10b89a6b",
+                    "path": "<MidiDevice>/note062",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad CS",
+                    "action": "ButtonDirectional",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "377e4ae9-ff9d-4bcb-9064-9c60b3e55d30",
+                    "path": "<MidiDevice>/note065",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad CS",
+                    "action": "ButtonDirectional",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Left",
+                    "id": "2beed4aa-dd9a-4cf0-8d49-ba3663f25c0f",
+                    "path": "<MidiDevice>/note060",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad CS",
+                    "action": "ButtonDirectional",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Right",
+                    "id": "404a9630-58af-4559-bbd2-5e618d234b8f",
+                    "path": "<MidiDevice>/note067",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad CS",
@@ -224,6 +361,39 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "MIDI",
+                    "id": "8257e1f8-b055-490a-bac4-9593f0ba86ab",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonSelect",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "7b4c18b0-6934-4ca5-9153-cbc004f2cf4e",
+                    "path": "<MidiDevice>/note055",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "1d420d76-7f99-43c6-883e-e7c3dbf116f3",
+                    "path": "<MidiDevice>/note050",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonSelect",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "f9ce68ce-7a4f-407f-8a76-b8dcb032afa6",
                     "path": "<Gamepad>/start",
@@ -244,6 +414,39 @@
                     "action": "ButtonStart",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "MIDI",
+                    "id": "2ba9ee46-5a51-4c08-9cb6-9a8388c6dcba",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonStart",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "9017c4c8-e942-4ac4-87a3-d0e875207693",
+                    "path": "<MidiDevice>/note055",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonStart",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "dcf2ea81-a869-4ca5-ab93-38b3faf756df",
+                    "path": "<Keyboard>/f3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonStart",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

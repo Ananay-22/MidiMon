@@ -1,0 +1,14 @@
+{
+  "name": "websocket-server",
+  "version": "1.0.0",
+  "description": "Simple Websocket Server",
+  "main": "index.js",
+  "scripts": {
+	"start": "node index.js"
+  },
+  "author": "Nana",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
