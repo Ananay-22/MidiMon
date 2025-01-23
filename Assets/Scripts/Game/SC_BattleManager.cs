@@ -185,7 +185,7 @@ public class SC_BattleManager : MonoBehaviour {
 
     private void Update()
     {
-        WSConnection.DispatchMessageQueue();
+        // WSConnection.DispatchMessageQueue();
 
         if (isInBattle == false)
         {
@@ -248,7 +248,7 @@ public class SC_BattleManager : MonoBehaviour {
     public void initBattle()
     {
         Img_battleBG.sprite = getRandomBackground();
-        StartCoroutine(WSConnection.StartConnection());
+        // StartCoroutine(WSConnection.StartConnection());
         RestartBattle();
         initPlayer();
         initFoe();
@@ -419,7 +419,7 @@ public class SC_BattleManager : MonoBehaviour {
                 _renderer.color = hitNote ? new Color(0.16f, 0.63f, 0.4f) : new Color(0.69f, 0.16f, 0.1f);
                 correctNotes += hitNote ? 1 : 0;
                 totalNotes++;
-                WSConnection.sendProgressUpdate(1f * totalNotes / allNotes);
+                // WSConnection.sendProgressUpdate(1f * totalNotes / allNotes);
         }
 
         // Check if this is the last element (MoveNext would return false after this)
@@ -431,7 +431,7 @@ public class SC_BattleManager : MonoBehaviour {
             currentComponent.playerScores.Add(1f * correctNotes / totalNotes);
             float multiplier =  1.5f * correctNotes / totalNotes;
             if (gameTypeLive && (1f * correctNotes / totalNotes < oppAccuracy)) multiplier = 0f;
-            WSConnection.sendFinalAccuracy(1f * correctNotes / totalNotes);
+            // WSConnection.sendFinalAccuracy(1f * correctNotes / totalNotes);
             StartCoroutine(AttackOpponent(playerPokemon, playerPokemon.moves[currentMove - 1], foePokemon, attackMultiplier: multiplier));
         }
     }
@@ -472,6 +472,7 @@ public class SC_BattleManager : MonoBehaviour {
             // Calculate a random deviation for the wait time (±0.1 seconds)
             float deviation = Random.Range(-0.1f, 0.4f);
             float waitTime = 0.25f + deviation;
+            waitTime = 1;
 
             // Wait for the next update time with the calculated deviation
             yield return new WaitForSeconds(waitTime);
@@ -604,7 +605,7 @@ public class SC_BattleManager : MonoBehaviour {
         }
         noteCounter.Dispose();
         _currFileTracker = GetNotes().GetEnumerator();
-        // if (gameTypeLive) StartCoroutine(StartEnemyAgent());
+        if (gameTypeLive) StartCoroutine(StartEnemyAgent());
     }
 
     private void UpdateSelectionMenu()
@@ -1423,63 +1424,63 @@ public class SC_BattleManager : MonoBehaviour {
     
     #endregion
 
-    private static class WSConnection
-    {
-        static WebSocket websocket = new("ws://localhost:8080");
-
-        // Start is called before the first frame update
-        public static IEnumerator StartConnection() {
-            if (websocket.State != WebSocketState.Open) {
-                websocket.OnOpen += () => { Debug.Log("Connection Open"); };
-                websocket.OnMessage += (bytes) => {
-                    Debug.Log("recv: " + System.Text.Encoding.UTF8.GetString(bytes));
-                    receiveString(System.Text.Encoding.UTF8.GetString(bytes));
-                };
-                yield return websocket.Connect();
-            }
-        }
-
-        public static void sendProgressUpdate(float progress) {
-            sendString($"p{progress}");
-        }
-
-        public static void sendFinalAccuracy(float accuracy) {
-            sendString($"a{accuracy}");
-        }
-
-        static void sendString(string message) {
-            websocket.SendText(message);
-        }
-
-        public static void DispatchMessageQueue() {
-            websocket.DispatchMessageQueue();
-        }
-
-        static void receiveProgressUpdate(float progress) {
-            UpdateProgress(progress);
-        }
-
-        static void receiveFinalAccuracy(float accuracy) {
-            finalAccuracyRecv = true;
-            oppAccuracy = accuracy;
-        }
-
-        static void receiveString(string message) {
-            if (message[0] == 'p') {
-                receiveProgressUpdate(float.Parse(message.Substring(1)));
-            } else if (message[0] == 'a') {
-                receiveFinalAccuracy(float.Parse(message.Substring(1)));
-            }
-        }
-
-        static void WSConnection_Dtor(object sender, System.EventArgs e) {
-            websocket.Close();
-        }
-        
-        private sealed class Destructor {
-            ~Destructor() {
-                websocket.Close();
-            }
-        }
-    }
+    // private static class WSConnection
+    // {
+    //     static WebSocket websocket = new("ws://localhost:8080");
+    //
+    //     // Start is called before the first frame update
+    //     public static IEnumerator StartConnection() {
+    //         if (websocket.State != WebSocketState.Open) {
+    //             websocket.OnOpen += () => { Debug.Log("Connection Open"); };
+    //             websocket.OnMessage += (bytes) => {
+    //                 Debug.Log("recv: " + System.Text.Encoding.UTF8.GetString(bytes));
+    //                 receiveString(System.Text.Encoding.UTF8.GetString(bytes));
+    //             };
+    //             yield return websocket.Connect();
+    //         }
+    //     }
+    //
+    //     public static void sendProgressUpdate(float progress) {
+    //         sendString($"p{progress}");
+    //     }
+    //
+    //     public static void sendFinalAccuracy(float accuracy) {
+    //         sendString($"a{accuracy}");
+    //     }
+    //
+    //     static void sendString(string message) {
+    //         websocket.SendText(message);
+    //     }
+    //
+    //     public static void DispatchMessageQueue() {
+    //         websocket.DispatchMessageQueue();
+    //     }
+    //
+    //     static void receiveProgressUpdate(float progress) {
+    //         UpdateProgress(progress);
+    //     }
+    //
+    //     static void receiveFinalAccuracy(float accuracy) {
+    //         finalAccuracyRecv = true;
+    //         oppAccuracy = accuracy;
+    //     }
+    //
+    //     static void receiveString(string message) {
+    //         if (message[0] == 'p') {
+    //             receiveProgressUpdate(float.Parse(message.Substring(1)));
+    //         } else if (message[0] == 'a') {
+    //             receiveFinalAccuracy(float.Parse(message.Substring(1)));
+    //         }
+    //     }
+    //
+    //     static void WSConnection_Dtor(object sender, System.EventArgs e) {
+    //         websocket.Close();
+    //     }
+    //     
+    //     private sealed class Destructor {
+    //         ~Destructor() {
+    //             websocket.Close();
+    //         }
+    //     }
+    // }
 }
